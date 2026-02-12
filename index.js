@@ -6,12 +6,12 @@ const program = new Command();
 const questions = [
   {
     type: 'input',
-    name: 'Course Name:',
+    name: 'CourseName:',
     message: 'Please enter course title',
   },
   {
     type: 'number',
-    name: 'Course price:',
+    name: 'CoursePrice:',
     message: 'Please enter course Price',
   },
 ];
@@ -28,6 +28,7 @@ program
   .description('add Course')
   .action(() => {
     inquirer.prompt(questions).then((answers) => {
+      console.log(answers);
       if (fs.existsSync(filePath)) {
         fs.readFile(filePath, 'utf-8', (err, fileContent) => {
           if (err) {
@@ -35,8 +36,7 @@ program
             process.exit();
           }
           console.log('fileContent =>', fileContent);
-          const fileContentAnswer = JSON.parse(fileContent);
-          fileContentAnswer.push(answers);
+          const fileContentAnswer = JSON.parse(fileContent).push(answers);
           fs.writeFile(
             filePath,
             JSON.stringify(fileContentAnswer),
