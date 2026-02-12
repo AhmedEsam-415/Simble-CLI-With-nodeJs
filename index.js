@@ -6,12 +6,12 @@ const program = new Command();
 const questions = [
   {
     type: 'input',
-    name: 'CourseName:',
+    name: 'CourseName',
     message: 'Please enter course title',
   },
   {
     type: 'number',
-    name: 'CoursePrice:',
+    name: 'CoursePrice',
     message: 'Please enter course Price',
   },
 ];
@@ -36,7 +36,8 @@ program
             process.exit();
           }
           console.log('fileContent =>', fileContent);
-          const fileContentAnswer = JSON.parse(fileContent).push(answers);
+          const fileContentAnswer = JSON.parse(fileContent);
+          fileContentAnswer.push(answers);
           fs.writeFile(
             filePath,
             JSON.stringify(fileContentAnswer),

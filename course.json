@@ -1,1 +1,5 @@
-2
+[
+  { "CourseName": "css ", "CoursePrice": 1500 },
+  { "CourseName": "js", "CoursePrice": 1500 },
+  { "CourseName": "html", "CoursePrice": 300 }
+]
